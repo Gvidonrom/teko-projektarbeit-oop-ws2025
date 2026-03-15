@@ -1,0 +1,253 @@
+<Window x:Class="KnowledgeBase.WpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="KnowledgeBase - Prototyp" Height="720" Width="1100"
+        WindowState="Maximized" MinWidth="900" MinHeight="600">
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <Grid Margin="12" MinWidth="850">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" FontSize="20" FontWeight="SemiBold" Text="Projekt-Wissensmanagement - Prototyp" />
+
+            <TabControl Grid.Row="1" Margin="0,10,0,0">
+                <TabItem Header="Projekte">
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                            <TextBlock FontWeight="SemiBold" Text="Projektliste"/>
+                            <ListBox ItemsSource="{Binding Projects}"
+                                     SelectedItem="{Binding SelectedProject}"
+                                     Height="220">
+                                <ListBox.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Projekt loeschen" Command="{Binding DeleteProjectCommand}"/>
+                                    </ContextMenu>
+                                </ListBox.ContextMenu>
+                            </ListBox>
+
+                            <Separator Margin="0,10,0,10"/>
+
+                            <TextBlock FontWeight="SemiBold" Text="Neues Projekt anlegen"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
+                                <TextBlock Width="90" Text="Name"/>
+                                <TextBox Width="220" Text="{Binding NewProjectName}" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
+                                <TextBlock Width="90" Text="Kunde"/>
+                                <TextBox Width="220" Text="{Binding NewCustomer}" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
+                                <TextBlock Width="90" Text="PM-Name"/>
+                                <TextBox Width="220" Text="{Binding PmName}" />
+                            </StackPanel>
+
+                            <TextBlock Margin="0,8,0,0" Text="Kernanforderungen"/>
+                            <TextBox Height="80" TextWrapping="Wrap" AcceptsReturn="True"
+                                     Text="{Binding NewCoreReq}"/>
+
+                            <Button Margin="0,10,0,0" Height="34"
+                                    Content="Projekt anlegen"
+                                    Command="{Binding CreateProjectCommand}"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1">
+                            <TextBlock FontWeight="SemiBold" Text="Details des ausgewaehlten Projekts"/>
+                            <Border Margin="0,4,0,12" Padding="10" BorderBrush="#CCC" BorderThickness="1" Background="#F9F9F9">
+                                <StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+                                        <TextBlock Text="Name: " FontWeight="SemiBold" Width="150"/>
+                                        <TextBlock Text="{Binding SelectedProject.Name, TargetNullValue='-'}"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+                                        <TextBlock Text="Kunde: " FontWeight="SemiBold" Width="150"/>
+                                        <TextBlock Text="{Binding SelectedProject.Customer, TargetNullValue='-'}"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="0,0,0,4">
+                                        <TextBlock Text="Kernanforderungen:" FontWeight="SemiBold" Margin="0,0,0,2"/>
+                                        <TextBlock Text="{Binding SelectedProject.CoreRequirements, TargetNullValue='-'}"
+                                                   TextWrapping="Wrap" MaxWidth="560"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Projektleiter: " FontWeight="SemiBold" Width="150"/>
+                                        <TextBlock Text="{Binding SelectedProject.ProjectManager.Name, TargetNullValue='-'}"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+
+                            <TextBlock FontWeight="SemiBold" Text="Informationen des ausgewaehlten Projekts"/>
+                            <Grid Margin="0,6,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="220"/>
+                                </Grid.RowDefinitions>
+                                <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,4">
+                                    <Button Content="Ausgewaehlte Information loeschen" Command="{Binding DeleteInformationCommand}"
+                                            Padding="8,4" VerticalAlignment="Center"/>
+                                </StackPanel>
+                                <ListView Grid.Row="1" ItemsSource="{Binding ProjectInfos}"
+                                          SelectedItem="{Binding SelectedInfo}">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}" Width="50"/>
+                                            <GridViewColumn Header="Art" DisplayMemberBinding="{Binding KindDisplay}" Width="90"/>
+                                            <GridViewColumn Header="Titel" DisplayMemberBinding="{Binding Title}" Width="220"/>
+                                            <GridViewColumn Header="Autor" DisplayMemberBinding="{Binding Author}" Width="120"/>
+                                            <GridViewColumn Header="Tags" DisplayMemberBinding="{Binding Tags}" Width="180"/>
+                                            <GridViewColumn Header="Info" Width="220">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <Button Content="{Binding InfoPreview}" ToolTip="Klicken zum Oeffnen von Inhalt oder Link"
+                                                                Command="{Binding DataContext.OpenInfoDetailCommand, RelativeSource={RelativeSource AncestorType=ListView}}"
+                                                                CommandParameter="{Binding}"
+                                                                HorizontalContentAlignment="Left" Padding="4,2" Margin="0"/>
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </Grid>
+
+                            <TextBlock Margin="0,10,0,4" FontWeight="SemiBold" Text="Kommentare und Versionen zur ausgewaehlten Information"/>
+                            <Grid Margin="0,0,0,8">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                                    <TextBlock Text="Kommentare" FontWeight="SemiBold"/>
+                                    <ListBox ItemsSource="{Binding SelectedInfoComments}" Height="80" Margin="0,2,0,0"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1">
+                                    <TextBlock Text="Versionen (nur Text)" FontWeight="SemiBold"/>
+                                    <ListBox ItemsSource="{Binding SelectedInfoRevisions}" Height="80" Margin="0,2,0,0"/>
+                                </StackPanel>
+                            </Grid>
+
+                            <TextBlock Margin="0,6,0,0" FontWeight="SemiBold" Text="Kommentar / Version hinzufuegen (ausgewaehlte Information)"/>
+                            <Grid Margin="0,6,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                                    <TextBlock Text="Kommentar"/>
+                                    <TextBox Height="60" TextWrapping="Wrap" AcceptsReturn="True"
+                                             Text="{Binding CommentText}"/>
+                                    <Button Margin="0,6,0,0" Height="32" Content="Kommentar hinzufuegen"
+                                            Command="{Binding AddCommentCommand}"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1">
+                                    <TextBlock Text="Version (nur Text)"/>
+                                    <TextBox Height="60" TextWrapping="Wrap" AcceptsReturn="True"
+                                             Text="{Binding RevisionText}"/>
+                                    <Button Margin="0,6,0,0" Height="32" Content="Version hinzufuegen"
+                                            Command="{Binding AddRevisionCommand}"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="Information hinzufuegen">
+                    <Grid Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock FontWeight="SemiBold" Text="Neue Information anlegen und einem Projekt zuordnen."/>
+
+                        <Grid Grid.Row="1" Margin="0,10,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                                <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
+                                    <TextBlock Width="120" Text="Info-Id"/>
+                                    <TextBox Width="240" Text="{Binding NewInfoId}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
+                                    <TextBlock Width="120" Text="Titel"/>
+                                    <TextBox Width="240" Text="{Binding InfoTitle}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
+                                    <TextBlock Width="120" Text="Autor"/>
+                                    <TextBox Width="240" Text="{Binding AuthorName}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
+                                    <TextBlock Width="120" Text="Art"/>
+                                    <ComboBox Width="240" ItemsSource="{Binding InfoKindOptions}"
+                                              SelectedItem="{Binding InfoKind}"/>
+                                </StackPanel>
+
+                                <StackPanel Margin="0,8,0,0">
+                                    <TextBlock Text="Tags (max. 3, durch Komma getrennt)"/>
+                                    <TextBlock Foreground="Gray" Text="z. B. Analyse, Design, Anforderung" FontSize="11"/>
+                                    <TextBox Width="360" Text="{Binding TagsCsv}" Margin="0,2,0,0"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="1">
+                                <TextBlock Text="Text oder URL (fuer Bild/Dokument)"/>
+                                <TextBox Height="130" TextWrapping="Wrap" AcceptsReturn="True"
+                                         Text="{Binding ContentOrUrl}"/>
+                                <Button Margin="0,10,0,0" Height="34"
+                                        Content="Information hinzufuegen"
+                                        Command="{Binding AddInformationCommand}"/>
+                                <Button Margin="0,8,0,0" Height="30"
+                                        Content="Demodaten laden"
+                                        Command="{Binding LoadDemoCommand}"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <TextBlock Grid.Row="2" Margin="0,10,0,0" Foreground="Gray"
+                                   Text="Projekt anlegen -> Information hinzufuegen (Text / Bild-URL / Dokument-URL) -> nach Tag suchen -> Kommentare und Versionen."/>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="Suche">
+                    <Grid Margin="10">
+                        <StackPanel>
+                            <TextBlock FontWeight="SemiBold" Text="Information nach Tag suchen (im ausgewaehlten Projekt)"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                <TextBlock Width="80" Text="Tag"/>
+                                <TextBox Width="240" Text="{Binding SearchTag}" />
+                                <Button Margin="10,0,0,0" Width="140" Height="30"
+                                        Content="Suchen"
+                                        Command="{Binding SearchByTagCommand}"/>
+                            </StackPanel>
+
+                            <ListView ItemsSource="{Binding SearchResults}" Height="460" Margin="0,10,0,0">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}" Width="50"/>
+                                        <GridViewColumn Header="Art" DisplayMemberBinding="{Binding KindDisplay}" Width="90"/>
+                                        <GridViewColumn Header="Titel" DisplayMemberBinding="{Binding Title}" Width="260"/>
+                                        <GridViewColumn Header="Autor" DisplayMemberBinding="{Binding Author}" Width="120"/>
+                                        <GridViewColumn Header="Tags" DisplayMemberBinding="{Binding Tags}" Width="320"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </ScrollViewer>
+</Window>
