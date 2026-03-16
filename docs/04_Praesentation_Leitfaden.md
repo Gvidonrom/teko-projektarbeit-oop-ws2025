@@ -1,10 +1,10 @@
-# 04 - Praesentation (5-7 Minuten)
+# 04 – Präsentation (5–7 Minuten)
 
-## Ziel der Praesentation
-In 5-7 Minuten soll klar gezeigt werden:
+## Ziel der Präsentation
+In 5–7 Minuten soll klar gezeigt werden:
 - welche Ausgangslage vorlag,
 - welche Ziele verfolgt wurden,
-- wie die Loesung aufgebaut ist,
+- wie die Lösung aufgebaut ist,
 - wie die Funktionen getestet wurden,
 - welche Erfahrungen aus der Umsetzung entstanden sind.
 
@@ -12,10 +12,10 @@ In 5-7 Minuten soll klar gezeigt werden:
 
 ## Zeitplan (Vorschlag)
 
-### 1) Ausgangslage und Aufgabenverstaendnis (ca. 45 Sekunden)
-Die Firma Xarelto benoetigt ein einfaches Wissensmanagement fuer Projekte.  
+### 1) Ausgangslage und Aufgabenverständnis (ca. 45 Sekunden)
+Die Firma Xarelto benötigt ein einfaches Wissensmanagement für Projekte.  
 Projektinformationen liegen oft verteilt vor und sind schwer auffindbar.  
-Die Aufgabenstellung fordert deshalb einen Prototyp, mit dem Projektleiter und Mitarbeiter Informationen strukturiert erfassen, mit Tags versehen, kommentieren, ergaenzen und nach Tags durchsuchen koennen.
+Die Aufgabenstellung fordert deshalb einen Prototyp, mit dem Projektleiter und Mitarbeiter Informationen strukturiert erfassen, mit Tags versehen, kommentieren, ergänzen und nach Tags durchsuchen können.
 
 ### 2) Zielsetzung (ca. 45 Sekunden)
 Die wichtigsten messbaren Ziele waren:
@@ -24,64 +24,64 @@ Die wichtigsten messbaren Ziele waren:
 - maximal 3 Tags pro Information
 - Kommentare und Revisionen
 - Suche nach Tags
-- Nachweis der Funktionalitaet durch geplante und durchgefuehrte Testfaelle
+- Nachweis der Funktionalität durch geplante und durchgeführte Testfälle
 
-### 3) Loesungsansatz / Architektur (ca. 60 Sekunden)
-Die Loesung wurde als WPF-Anwendung mit MVVM umgesetzt und in Schichten getrennt:
+### 3) Lösungsansatz / Architektur (ca. 60 Sekunden)
+Die Lösung wurde als WPF-Anwendung mit MVVM umgesetzt und in Schichten getrennt:
 - **Domain** (Fachlogik und Modelle)
 - **Application** (Services)
 - **Infrastructure** (InMemory-Repository)
 - **Presentation** (WPF + ViewModel)
 
-Vorteil: klare Trennung von Verantwortlichkeiten, gute Nachvollziehbarkeit, einfache Erweiterbarkeit.
+Vorteil: klare Trennung von Verantwortlichkeiten, gute Nachvollziehbarkeit und einfache Erweiterbarkeit.
 
 ### 4) Live-Demo (ca. 120 Sekunden)
 Vorgehen in der Demo:
 1. Projekt anlegen
-2. Informationen in verschiedenen Typen hinzufuegen
+2. Informationen in verschiedenen Typen hinzufügen
 3. Tags vergeben und nach Tags suchen
-4. Kommentar und Revision hinzufuegen
-5. Info-Detailfenster oeffnen (Text lesen / URL im Browser oeffnen)
-6. Information und Projekt loeschen (inkl. Kontextmenue)
+4. Kommentar und Revision hinzufügen
+5. Info-Detailfenster öffnen (Text lesen / URL im Browser öffnen)
+6. Information und Projekt löschen (inkl. Kontextmenü)
 
 ### 5) Testresultate (ca. 60 Sekunden)
-Die Testfaelle wurden vorab geplant und anschliessend praktisch durchgefuehrt.  
-Alle Kernfaelle sind bestanden:
+Die Testfälle wurden vorab geplant und anschließend praktisch durchgeführt.  
+Alle Kernfälle sind bestanden:
 - Projektanlage
-- Eindeutiger Projektname
+- eindeutiger Projektname
 - Informationserfassung
 - Tag-Regeln
 - Kommentare/Revisionen
 - Suche
-- Loeschfunktionen
+- Löschfunktionen
 - Detailansicht
 
-Nicht funktionierende Punkte wurden im Verlauf korrigiert und erneut getestet.
+Nicht funktionierende Punkte wurden im Verlauf korrigiert und anschließend erneut getestet.
 
 ### 6) Planung, Controlling und Learnings (ca. 45 Sekunden)
-Der Gesamtaufwand lag ueber der urspruenglichen Planung, vor allem wegen UI-Feinschliff und Dokumentation.  
+Der Gesamtaufwand lag über der ursprünglichen Planung, vor allem wegen UI-Feinschliff und Dokumentation.  
 Wichtigste Erkenntnisse:
-- Geschaeftsregeln zentral in Domain/Services absichern
+- Geschäftsregeln zentral in Domain/Services absichern
 - UI-Entwicklung realistisch mit Puffer planen
 - Dokumentation parallel zur Entwicklung pflegen
-- Iteratives Vorgehen bringt stabile Ergebnisse
+- iteratives Vorgehen führt zu stabileren Ergebnissen
 
 ---
 
-## Abschluss-Satz (10-15 Sekunden)
-Der Prototyp erfuellt die geforderte Funktionalitaet der Aufgabenstellung, ist nachvollziehbar dokumentiert und durch Testfaelle belegt.  
-Damit ist eine solide Grundlage fuer eine spaetere Erweiterung mit persistenter Datenhaltung geschaffen.
+## Abschlusssatz (10–15 Sekunden)
+Der Prototyp erfüllt die geforderte Funktionalität der Aufgabenstellung, ist nachvollziehbar dokumentiert und durch Testfälle belegt.  
+Damit ist eine solide Grundlage für eine spätere Erweiterung mit persistenter Datenhaltung geschaffen.
 
 ---
 
 ## Erwartbare Fragen und kurze Antworten
 
 ### Warum wurde keine Datenbank verwendet?
-Die Aufgabenstellung fordert einen Prototyp fuer kleine Datenmengen (bis ca. 100 Eintraege).  
-InMemory ist dafuer ausreichend und reduziert die technische Komplexitaet.
+Die Aufgabenstellung fordert einen Prototyp für kleine Datenmengen (bis ca. 100 Einträge).  
+InMemory ist dafür ausreichend und reduziert die technische Komplexität.
 
 ### Wie wird die Tag-Regel abgesichert?
 Durch Validierung in der Logik (maximal 3 Tags, Duplikatbereinigung), nicht nur in der UI.
 
-### Wie werden Originaltext und Ergaenzungen getrennt?
-Ergaenzungen werden als eigene `Revision`-Objekte gespeichert und damit klar vom Original unterscheidbar gemacht.
+### Wie werden Originaltext und Ergänzungen getrennt?
+Ergänzungen werden als eigene `Revision`-Objekte gespeichert und damit klar vom Original unterscheidbar gemacht.

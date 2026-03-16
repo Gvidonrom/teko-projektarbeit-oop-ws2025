@@ -1,35 +1,35 @@
-# 02 - Testfaelle
+# 02 – Testfälle
 
 ## Testplan
 
-| ID  | Anforderung                      | Testschritte                                                                                        | Erwartetes Resultat                    | Ist-Resultat | Status | Kommentar/Korrektur |
-|---  |----------------------------------|-----------------------------------------------------------------------------------------------------|---------------------------------------------------------|---|---|---|
-| T01 | Projekt erstellen                | In Tab **Projekte** Name, Kunde, PM, Kernanforderungen eingeben -> **Projekt anlegen**              | Projekt wird erstellt und in der Projektliste angezeigt | Projekt wurde erstellt und korrekt in der Liste dargestellt | Bestanden | - |
-| T02 | Projektname eindeutig            | Projekt mit bereits vorhandenem Namen erneut anlegen                                                | Fehlermeldung, kein Duplikat                 | Es erscheint Fehlermeldung, zweites Projekt mit gleichem Namen wird nicht angelegt | Bestanden | Regel im `ProjectService` abgesichert |
-| T03 | Text-Information anlegen         | Projekt auswaehlen -> Tab **Information hinzufuegen** -> Art = Text -> Inhalt erfassen -> Speichern | Eintrag erscheint in Projektinfos | Textinformation wird in der Liste angezeigt | Bestanden | - |
-| T04 | Bild-URL anlegen                 | Art = Bild(URL) waehlen -> URL eingeben -> Speichern                                                | Eintrag erscheint, URL gespeichert | Eintrag ist sichtbar; URL wird in Info-Detail korrekt angezeigt | Bestanden | - |
-| T05 | Dokument-URL anlegen             | Art = Dokument(URL) waehlen -> URL eingeben -> Speichern                                            | Eintrag erscheint, URL gespeichert | Eintrag ist sichtbar; URL kann ueber Detailfenster geoeffnet werden | Bestanden | - |
-| T06 | Tags max 3                       | Mehr als 3 Tags eingeben (z. B. 5 Werte)                                                            | Nur max. 3 eindeutige Tags gespeichert | Es werden nur 3 Tags uebernommen, Duplikate bereinigt | Bestanden | Begrenzung sowohl UI-nah als auch in Service-Logik |
-| T07 | Keine Tags eingeben              | Leeres Tag-Feld und Speichern versuchen                                                             | Validierungsfehler | Hinweisdialog erscheint; Speichern wird abgebrochen | Bestanden | Benutzerhinweis vorhanden |
-| T08 | Kommentar hinzufuegen            | Info auswaehlen -> Kommentar eingeben -> **Kommentar hinzufuegen**                                  | Kommentar wird gespeichert und angezeigt | Kommentar erscheint im Bereich „Kommentare ...“ der ausgewaehlten Info | Bestanden | Auswahl bleibt erhalten |
-| T09 | Revision Text                    | Text-Info auswaehlen -> Revision eingeben -> **Version hinzufuegen**                                | Revision wird gespeichert und vom Original unterscheidbar angezeigt | Revision erscheint in „Versionen“, Textinhalt wurde ergaenzt | Bestanden | Trennung ueber eigenes `Revision`-Objekt |
-| T10 | Revision auf Bild/Dokument       | Bild- oder Dokument-Info auswaehlen -> Revision speichern                                           | Fehlermeldung | Operation wird abgelehnt mit Fehlermeldung | Bestanden | Fachregel korrekt durchgesetzt |
-| T11 | Suche nach vorhandenem Tag       | In Tab **Suche** bestehenden Tag eingeben -> **Suchen**                                             | Trefferliste mit passenden Eintraegen | Passende Eintraege werden angezeigt | Bestanden | - |
-| T12 | Suche nach nicht vorhandenem Tag | Nicht vorhandenen Tag suchen                                                                        | Leere Trefferliste | Trefferliste bleibt leer | Bestanden | - |
-| T13 | Information loeschen             | Info auswaehlen -> **Ausgewaehlte Information loeschen** -> Bestaetigen                             | Information wird entfernt | Eintrag verschwindet aus Projektliste | Bestanden | Bestaetigungsdialog vorhanden |
-| T14 | Projekt loeschen                 | Projekt in Liste per Rechtsklick -> **Projekt loeschen** -> Bestaetigen                             | Projekt inkl. zugehoeriger Infos entfernt | Projekt wird aus Liste entfernt, Inhalte nicht mehr verfuegbar | Bestanden | Kontextmenue funktioniert |
-| T15 | Info-Detailfenster               | In Spalte **Info** auf Eintrag klicken                                                              | Detailfenster oeffnet; Text/URL voll sichtbar | Fenster oeffnet korrekt; URL kann per Button im Browser geoeffnet werden | Bestanden | - |
-| T16 | Anzeige/Startverhalten           | Anwendung starten; Fenstergroesse pruefen                                                           | Fenster maximiert; bei kleineren Aufloesungen Scroll moeglich | Start ist maximiert, Inhalte sind durch Scroll erreichbar | Bestanden | Verbesserte Lesbarkeit in Praesentation |
+| ID  | Anforderung                | Testschritte                                  | Erwartetes Resultat                                  | Ist-Resultat                                                        | Status    | Kommentar / Korrektur |
+|-----|----------------------------|-----------------------------------------------|------------------------------------------------------|---------------------------------------------------------------------|-----------|---------------------------------------|
+| T01 | Projekt erstellen          | Projektdaten eingeben, speichern              | Projekt wird erstellt und angezeigt                  | Projekt wurde erstellt und korrekt in der Projektliste angezeigt    | Bestanden | -                                     |
+| T02 | Projektname eindeutig      | Projekt mit gleichem Namen erneut anlegen     | Fehlermeldung, kein Duplikat                         | Fehlermeldung erscheint, kein zweites Projekt mit gleichem Namen    | Bestanden | Regel im `ProjectService` abgesichert |
+| T03 | Text-Information anlegen   | Typ „Text“ auswählen, Inhalt speichern        | Eintrag erscheint in Projektinfos                    | Textinformation wird korrekt angezeigt                              | Bestanden | -                                     |
+| T04 | Bild-URL anlegen           | Typ „Bild (URL)“ auswählen, URL speichern     | Eintrag erscheint, URL gespeichert                   | Eintrag sichtbar; URL wird korrekt übernommen                       | Bestanden | -                                     |
+| T05 | Dokument-URL anlegen       | Typ „Dokument (URL)“ auswählen, URL speichern | Eintrag erscheint, URL gespeichert                   | Eintrag sichtbar; URL kann im Detailfenster geöffnet werden         | Bestanden | -                                     |
+| T06 | Tags max. 3                | Mehr als 3 Tags eingeben                      | Nur maximal 3 Tags werden gespeichert                | Es werden nur 3 Tags übernommen, Duplikate bereinigt                | Bestanden | Begrenzung in UI und Service-Logik    |
+| T07 | Kommentar hinzufügen       | Info auswählen, Kommentar speichern           | Kommentar erscheint in der Liste                     | Kommentar wird gespeichert und angezeigt                            | Bestanden | -                                     |
+| T08 | Revision für Text          | Text-Info auswählen, Revision speichern       | Revision erscheint, Text wird ergänzt                | Revision wird separat angezeigt und Textinhalt erweitert            | Bestanden | Trennung über `Revision`-Objekt       |
+| T09 | Revision auf Bild/Dokument | Nicht-Text-Info auswählen, Revision speichern | Fehlermeldung                                        | Operation wird mit Fehlermeldung abgelehnt                          | Bestanden | Fachregel korrekt umgesetzt           |
+| T10 | Suche nach Tag             | Tag eingeben, suchen                          | Trefferliste zeigt passende Einträge                 | Passende Einträge werden korrekt angezeigt                          | Bestanden | -                                     |
+| T11 | Information löschen        | Info auswählen, Löschung bestätigen           | Info wird entfernt                                   | Eintrag wird entfernt und nicht mehr angezeigt                      | Bestanden | Bestätigungsdialog vorhanden          |
+| T12 | Projekt löschen            | Projekt über Kontextmenü löschen              | Projekt inkl. zugehöriger Infos entfernt             | Projekt und Inhalte werden entfernt                                 | Bestanden | Kontextmenü funktioniert              |
+| T13 | Info-Detailfenster         | In Spalte „Info“ klicken                      | Detailfenster öffnet, URL/Text sichtbar              | Fenster öffnet; Text lesbar, URL im Browser öffnbar                 | Bestanden | -                                     |
+| T14 | Projektdetails anzeigen    | Projekt in Liste auswählen                    | Name, Kunde, Kernanforderungen, PM werden angezeigt  | Detailblock wird korrekt aktualisiert                               | Bestanden | -                                     |
+| T15 | Startverhalten UI          | Anwendung starten                             | Fenster startet maximiert                            | Anwendung startet maximiert mit Scroll-Unterstützung                | Bestanden | Verbesserte Präsentationsfähigkeit    | 
 
 ## Zusammenfassung
-- Geplante Testfaelle: 16
-- Durchgefuehrte Testfaelle: 16
-- Bestanden: 16
+- Geplante Testfälle: 15
+- Durchgeführte Testfälle: 15
+- Bestanden: 15
 - Nicht bestanden: 0
 
 ## Offene Punkte
-- Keine kritischen offenen Punkte fuer den geforderten Prototypen.
-- Moegliche Erweiterungen fuer spaeter:
-  - persistente Datenhaltung (z. B. Datenbank),
-  - Rollen/Berechtigungen mit echter Authentifizierung,
-  - Export/Import von Projektdaten.
+- Keine kritischen offenen Punkte für den geforderten Prototyp.
+- Mögliche Erweiterungen:
+  - persistente Datenhaltung (Datenbank),
+  - differenzierte Rollen/Berechtigungen,
+  - erweiterte Suchfilter.
+
