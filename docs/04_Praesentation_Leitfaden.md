@@ -71,17 +71,3 @@ Wichtigste Erkenntnisse:
 ## Abschlusssatz (10–15 Sekunden)
 Der Prototyp erfüllt die geforderte Funktionalität der Aufgabenstellung, ist nachvollziehbar dokumentiert und durch Testfälle belegt.  
 Damit ist eine solide Grundlage für eine spätere Erweiterung mit persistenter Datenhaltung geschaffen.
-
----
-
-## Erwartbare Fragen und kurze Antworten
-
-### Warum wurde keine Datenbank verwendet?
-Die Aufgabenstellung fordert einen Prototyp für kleine Datenmengen (bis ca. 100 Einträge).  
-InMemory ist dafür ausreichend und reduziert die technische Komplexität.
-
-### Wie wird die Tag-Regel abgesichert?
-Durch Validierung in der Logik (maximal 3 Tags, Duplikatbereinigung), nicht nur in der UI.
-
-### Wie werden Originaltext und Ergänzungen getrennt?
-Ergänzungen werden als eigene `Revision`-Objekte gespeichert und damit klar vom Original unterscheidbar gemacht.
