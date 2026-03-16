@@ -22,13 +22,10 @@
 - Testfaelle (`docs/02_Testfaelle.md`)
 - Planung und Controlling (`docs/03_Planung_Controlling.md`)
 - Praesentationsleitfaden (`docs/04_Praesentation_Leitfaden.md`)
-- Klassendiagramm (`docs/diagrams/klassendiagramm.puml` und `docs/diagrams/klassendiagramm.png`)
+- Klassendiagramm (`docs/diagrams/Erläutertes_Klassendiagramm.png und Use_Case_Diagram.png`)
 
 ## Start der Anwendung
 ```bash
 dotnet build
 dotnet run
 ```
-
-## Hinweis
-Diese Abgabe entspricht der Aufgabenstellung der Projektarbeit OOP TEKO WS2025/26.

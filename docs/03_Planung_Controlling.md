@@ -2,15 +2,15 @@
 
 ## Planung vs. Ist
 
-| Arbeitspaket | Geplant (h) | Ist (h) | Delta | Bemerkung |
-|---|---:|---:|---:|---|
-| Analyse der Aufgabenstellung | 3 | 4 | +1 | Anforderungen und Abgrenzung mussten genauer ausgearbeitet werden |
-| Design / Klassendiagramm | 3 | 4 | +1 | Diagramm wurde nach Implementierungsdetails erweitert |
-| Implementierung Domain + Services | 5 | 7 | +2 | Zusaetzliche Regeln (Unique Name, Delete-Funktionen, Tag-Validierung) umgesetzt |
-| Implementierung UI (WPF/MVVM) | 5 | 8 | +3 | Mehr Aufwand fuer Bindings, neue Ansichten (Detailfenster), Usability-Verbesserungen |
-| Testplanung und Tests | 2 | 3 | +1 | Testfaelle wurden detaillierter dokumentiert und nachgebessert |
-| Dokumentation und Praesentation | 2 | 4 | +2 | Umfangreiche Enddokumentation inkl. Checklisten und Praesentationsleitfaden |
-| **Summe** | **20** | **30** | **+10** | Delta fuer Lernprojekt nachvollziehbar und fachlich begruendet |
+| Arbeitspaket                      |Geplant (h)| Ist (h) | Delta | Bemerkung |
+|-----------------------------------|-------:|-------:|--------:|--------------------------------------------------------------------------------------|
+| Analyse der Aufgabenstellung      | 3      | 4      | +1      | Anforderungen und Abgrenzung mussten genauer ausgearbeitet werden                    |
+| Design / Klassendiagramm          | 3      | 4      | +1      | Diagramm wurde nach Implementierungsdetails erweitert                                |
+| Implementierung Domain + Services | 5      | 7      | +2      | Zusaetzliche Regeln (Unique Name, Delete-Funktionen, Tag-Validierung) umgesetzt      |
+| Implementierung UI (WPF/MVVM)     | 5      | 8      | +3      | Mehr Aufwand fuer Bindings, neue Ansichten (Detailfenster), Usability-Verbesserungen |
+| Testplanung und Tests             | 2      | 3      | +1      | Testfaelle wurden detaillierter dokumentiert und nachgebessert                       |
+| Dokumentation und Praesentation   | 2      | 4      | +2      | Umfangreiche Enddokumentation inkl. Checklisten und Praesentationsleitfaden          |
+| **Summe**                         | **20** | **30** | **+10** | Delta fuer Lernprojekt nachvollziehbar und fachlich begruendet                       |
 
 ## Delta-Analyse
 
