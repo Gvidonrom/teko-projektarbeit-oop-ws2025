@@ -289,7 +289,7 @@ public sealed class MainViewModel : ObservableObject
         var title = SelectedInfo.Title;
         if (MessageBox.Show(
                 $"Information \"{title}\" (Id {SelectedInfo.Id}) aus dem Projekt entfernen?",
-                "Information loeschen",
+                "Information löschen",
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Question) != MessageBoxResult.Yes)
             return;
@@ -312,8 +312,8 @@ public sealed class MainViewModel : ObservableObject
         var name = SelectedProject.Name;
         var id = SelectedProject.Id;
         if (MessageBox.Show(
-                $"Projekt \"{name}\" (Id {id}) loeschen? Alle zugehoerigen Informationen werden geloescht.",
-                "Projekt loeschen",
+                $"Projekt \"{name}\" (Id {id}) löschen? Alle zugehörigen Informationen werden gelöscht.",
+                "Projekt löschen",
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Warning) != MessageBoxResult.Yes)
             return;
@@ -359,7 +359,7 @@ public sealed class MainViewModel : ObservableObject
         _repo.Clear();
         _nextProjectId = 1;
 
-        _projectService.CreateProject(new CreateProjectRequest(_nextProjectId, "Xarelto-Wissensmanagement-Prototyp", "Xarelto AG", "Wissensmanagement fuer Projekte", 1, "Projektleiter"));
+        _projectService.CreateProject(new CreateProjectRequest(_nextProjectId, "Xarelto-Wissensmanagement-Prototyp", "Xarelto AG", "Wissensmanagement für Projekte", 1, "Projektleiter"));
         _nextProjectId++;
         _projectService.AddInformation(new AddInformationRequest(1, 1, "Anforderungsentwurf", 2, "Anna", "Text", "Erste Anforderungen ...", new[] { "Anforderung", "Analyse" }));
         _projectService.AddInformation(new AddInformationRequest(1, 2, "Architekturskizze", 2, "Bernd", "Image", "https://example.com/arch.png", new[] { "Design" }));

@@ -17,7 +17,7 @@
                  IsReadOnly="True" Padding="6"/>
 
         <StackPanel x:Name="UrlPanel" Grid.Row="2" Orientation="Horizontal" Margin="0,8,0,0" Visibility="Collapsed">
-            <Button x:Name="OpenLinkButton" Content="Link im Browser oeffnen" Click="OpenLinkButton_OnClick" Padding="12,6"/>
+            <Button x:Name="OpenLinkButton" Content="Link im Browser öffnen" Click="OpenLinkButton_OnClick" Padding="12,6"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -36,7 +36,7 @@ public partial class InfoDetailWindow : Window
         }
         catch
         {
-            MessageBox.Show("Link konnte nicht geoeffnet werden.", "Fehler", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show("Link konnte nicht geöffnet werden.", "Fehler", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
     }
 }

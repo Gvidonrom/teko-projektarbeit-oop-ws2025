@@ -30,7 +30,7 @@ public sealed class Tag
     {
         Name = (name ?? "").Trim();
         if (string.IsNullOrWhiteSpace(Name))
-            throw new ArgumentException("Tag name cannot be empty.");
+            throw new ArgumentException("Der Tag-Name darf nicht leer sein.");
     }
 
     public override bool Equals(object? obj) =>
@@ -90,7 +90,7 @@ public abstract class Information
     protected Information(int id, string title, User author, DateTime? createdAt = null)
     {
         if (string.IsNullOrWhiteSpace(title))
-            throw new ArgumentException("Title cannot be empty.", nameof(title));
+            throw new ArgumentException("Der Titel darf nicht leer sein.", nameof(title));
 
         Id = id;
         Title = title;
@@ -178,9 +178,9 @@ public sealed class Project
     public Project(int id, string name, string customer, string coreRequirements, User projectManager)
     {
         if (string.IsNullOrWhiteSpace(name))
-            throw new ArgumentException("Project name cannot be empty.", nameof(name));
+            throw new ArgumentException("Der Projektname darf nicht leer sein.", nameof(name));
         if (string.IsNullOrWhiteSpace(customer))
-            throw new ArgumentException("Customer cannot be empty.", nameof(customer));
+            throw new ArgumentException("Der Kunde darf nicht leer sein.", nameof(customer));
 
         Id = id;
         Name = name;
@@ -193,7 +193,7 @@ public sealed class Project
     {
         if (info is null) throw new ArgumentNullException(nameof(info));
         if (_informations.Any(i => i.Id == info.Id))
-            throw new InvalidOperationException($"Information with id {info.Id} already exists in project {Id}.");
+            throw new InvalidOperationException($"Eine Information mit der ID {info.Id} existiert im Projekt {Id} bereits.");
 
         _informations.Add(info);
     }
